@@ -9,15 +9,28 @@
     <link rel="stylesheet" href="TehtavatOnline.css">
 </head>
 <body>
-<h1>Täältä löydät ajantasaisen tilanteen tekemättömistä tehtävistäsi</h1>
-<div>
+<h1>TEHTÄVÄLISTA</h1>
+
+<div class="osiot">
+    <h2>Tehtävien listaus</h2>
+    <p>Klikkaamalla Hae tehtävät nappia, saat näkyviin tällä hetkellä tehtävälistallasi olevat tehtävät.</p>
     <input type="button" id="nappi" value="Hae tehtävät">
     <table id="todolista"></table>
     <p id="taulukonkoko"></p>
+</div>
+<div class="osiot">
+    <h2>Tehtävän lisäys</h2>
+    <p>Mikäli listalta puuttuu jokin tehtävä, voit lisätä sen tässä. Kirjaa tehtävä ja klikkaa "Lisää tehtävä". Päivitä sen jälkeen tehtävälista hakemalla tehtävät.</p>
     <input type="text" id="lisattava">
     <input type="button" id="painike" value="Lisää tehtävä">
+    <p id="lisatty"></p>
+</div>
+<div class="osiot">
+    <h2>Tehtävän poisto</h2>
+    <p>Jos olet jo suorittanut jonkin tehtävän, voit poistaa sen antamalla tehtävän id-numeron ja klikkaamalla "Poista id"</p>
     <input type="text" id="poistettava">
-    <input type="button" id="dellaa" value="Poista tehtävä id-numerolla">
+    <input type="button" id="dellaa" value="Poista id">
+    <p id="onnittelu"></p>
 </div>
 
 

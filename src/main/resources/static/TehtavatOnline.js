@@ -18,7 +18,7 @@ function hae() {
 
     function suorita(tehtavat) {
         var todolista = document.getElementById("todolista");
-        todolista.innerHTML = "<tr>" + "<th>" + "Id" + "<th>" + "Tehtävä" + "</th>" + "</tr>";
+        todolista.innerHTML = "<tr>" + "<th>" + "ID" + "<th>" + "TEHTAVA" + "</th>" + "</tr>";
         for (var i = 0; i < tehtavat.length; i++) {
             var t = tehtavat[i];
             console.dir(t);
@@ -38,6 +38,7 @@ function hae() {
             .catch(function (error) {
                 console.log(error);
             });
+        document.getElementById("lisatty").innerHTML = "Tehtävä on lisätty listalle."
     }
 
     function poista() {
@@ -49,6 +50,7 @@ function hae() {
         }).catch(function (error) {
             console.log("Deletion failed with error:" + error);
         });
+        document.getElementById("onnittelu").innerHTML = "Hienoa, tehtävälistasi on nyt astetta lyhyempi!";
     }
 
 

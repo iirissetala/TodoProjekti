@@ -53,6 +53,7 @@ public class TehtavaController {
     @DeleteMapping("/{id}")
     public void poista(@PathVariable int id) throws SQLException {
         dao.poista(id);
+
     }
 
 }

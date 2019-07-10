@@ -1,4 +1,13 @@
-body {background-color: lemonchiffon;}
-h1 {color: black;}
-table td {font-weight: bold;}
-table tbody {border: black;}
+body {background-image: url("taustataivas.jpg");}
+h1, h2, p {color: wheat;}
+
+table, th {color: wheat; font-weight: bold;}
+table, td {color: wheat;}
+th, td {border: 2px double wheat; height: 20px;}
+table, th, td {width: 50%; text-align: center;}
+
+#taulukonkoko {font-size: 17px; font-weight: bold;}
+
+.osiot {padding-bottom: 20px;}
+
+input, button {color: black; background-color: wheat;}
