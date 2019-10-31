@@ -12,6 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+//jos tarvitaan komponentteja muista luokista, lisätään annotaatio ComponentScan,
+//jonne("paketin nimi esim fi.academy.harjoitukset")
+//etsii automaattisesti komponentteja samasta paketista! vain jos on muualla, pitää lisätä
 @RequestMapping("/api/todot")
 public class TehtavaController {
     private TehtavaDao dao;
@@ -54,6 +57,17 @@ public class TehtavaController {
     public void poista(@PathVariable int id) throws SQLException {
         dao.poista(id);
 
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<?> muokkaa (@RequestBody Tehtava tehtava, @PathVariable int id){
+        boolean muuttiko = dao.muuta(id, tehtava);
+        if (muuttiko){
+            tehtava.setId(id);
+            return ResponseEntity.ok(tehtava);
+        }
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(new Virheviesti(String.format("Ei löytynyt tehtävää annetulla id:llä.")));
     }
 
 }
