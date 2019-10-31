@@ -39,6 +39,7 @@ function hae() {
             .catch(function (error) {
                 console.log(error);
             });
+        document.getElementById("lisattava").value = "";
         document.getElementById("lisatty").innerHTML = "Tehtävä on lisätty listalle. Päivitä tehtävälista klikkaamalla 'Hae tehtävät'."
     }
 
@@ -54,6 +55,8 @@ function muokkaa() {
         .catch(function (error) {
             console.log(error);
         });
+    document.getElementById("muokattavanid").value = "";
+    document.getElementById("muokattava").value = "";
     document.getElementById("muutettu").innerHTML = "Tehtävä on muokattu. Päivitä tehtävälista klikkaamalla 'Hae tehtävät'."
 }
 
@@ -67,6 +70,8 @@ function muokkaa() {
         }).catch(function (error) {
             console.log("Deletion failed with error:" + error);
         });
+        document.getElementById("poistettava").value = "";
+        document.getElementById("onnittelu").innerHTML = "Tehtävä on poistettu. Päivitä tehtävälista klikkaamalla 'Hae tehtävät'."
 
     }
 /* Tämä oli poista metodin sisällä kun yritin  saada tulostumaan herjaa mikäli idtä ei löydy.
