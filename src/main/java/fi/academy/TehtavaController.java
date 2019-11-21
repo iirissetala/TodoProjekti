@@ -34,6 +34,11 @@ public class TehtavaController {
         System.out.println("Listataan kaikki tekemättömät tehtävät");
         return tehtavat;
     }
+    @GetMapping("/{id}")
+    public Tehtava tulostaTehtava(@PathVariable int id){
+        Tehtava t = dao.naytaTehtava(id);
+        return t;
+    }
 
     @PostMapping("")
     public ResponseEntity<?> luoUuusi(@RequestBody Tehtava t) {

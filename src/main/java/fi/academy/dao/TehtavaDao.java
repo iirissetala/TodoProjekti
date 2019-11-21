@@ -20,7 +20,7 @@ public class TehtavaDao implements TehtavaDaoInterface {
 
     public TehtavaDao() throws SQLException, ClassNotFoundException {
         Class.forName("org.postgresql.Driver");
-        con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/tehtavat", "oppilas", "salasana");
+        con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/tehtavat", "puser", "super");
             System.out.println("Yhteys saatu");
     }
 
@@ -41,6 +41,21 @@ public class TehtavaDao implements TehtavaDaoInterface {
             return Collections.EMPTY_LIST; //jotta palautetaan jotakin virhetilanteessa
         }
         return haetut;
+    }
+    @Override
+    public Tehtava naytaTehtava(int id){
+        Tehtava t = new Tehtava();
+        String sql = "SELECT * FROM tehtava where (id=?)";
+        try (PreparedStatement pstm = con.prepareStatement(sql)){
+            pstm.setInt(1, id);
+            for (ResultSet tulos = pstm.executeQuery(); tulos.next();){
+                t.setTehtava(tulos.getString("tehtava"));
+                t.setId(tulos.getInt("id"));
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return t;
     }
 
     @Override
@@ -65,13 +80,8 @@ public class TehtavaDao implements TehtavaDaoInterface {
         String sql = "UPDATE tehtava SET tehtava = ? WHERE id = ?";
         try (PreparedStatement ps = con.prepareStatement(sql)){
             ps.setString(1, t.getTehtava());
-            ps.setInt(2, t.getId());
+            ps.setInt(2, id);
             ps.executeUpdate();
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                t.setId(rs.getInt("id"));
-                t.setTehtava(rs.getString("tehtava"));
-            }
 
             } catch (SQLException e){
             e.printStackTrace();
