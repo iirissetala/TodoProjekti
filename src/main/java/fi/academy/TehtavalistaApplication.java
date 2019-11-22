@@ -12,6 +12,11 @@ public class TehtavalistaApplication extends SpringBootServletInitializer {
 
         SpringApplication.run(TehtavalistaApplication.class, args);
     }
+
+    //Tämä ja yllä oleva app extends SBSI tarvitaan, jotta voidaan deployata ulkoiselle serverille (Tomcat)
+    //lisäksi pom.xml package war lisätty ennen riippuvuuksia (oletuksena jar)
+    //tee war terminaalissa mvn clean ja mvn install -> nimeä uudelleen TehtavalistaApplication
+    //ja kopioi war tomcatin webapps kansioon
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder){
         return builder.sources(TehtavalistaApplication.class);

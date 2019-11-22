@@ -41,15 +41,14 @@ public class TehtavaController {
     }
 
     @PostMapping("")
-    public ResponseEntity<?> luoUuusi(@RequestBody Tehtava t) {
-        System.out.println("****** Luodaan uutta: " + t);
+    public ResponseEntity<?> luoUusi(@RequestBody Tehtava t){
         int id = 0;
         try {
             id = dao.lisaa(t);
         } catch (SQLException e) {
             e.printStackTrace();
+            System.out.println(e.getMessage());
         }
-        System.out.println("****** Luotu uusi: " + t);
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")

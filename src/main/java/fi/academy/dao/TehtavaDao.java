@@ -60,12 +60,17 @@ public class TehtavaDao implements TehtavaDaoInterface {
 
     @Override
     public int lisaa (Tehtava t) throws SQLException {
-        String tehtava = t.getTehtava();
+        int id = 0;
         String sql = "INSERT INTO tehtava (tehtava) VALUES (?)";
-        PreparedStatement lause = con.prepareStatement(sql);
-            lause.setString(1, tehtava);
+        PreparedStatement lause = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            lause.setString(1, t.getTehtava());
             lause.executeUpdate();
-            return t.getId();
+            ResultSet rs = lause.getGeneratedKeys();
+            while (rs.next()){
+                id = rs.getInt(1);
+                System.out.println("Uuden tehtävän id: " + id);
+            }
+            return id;
     }
 
     @Override

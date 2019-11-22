@@ -28,20 +28,21 @@ function hae() {
         document.getElementById("taulukonkoko").innerHTML = "Sinulla on " + tehtavat.length + " tekemätöntä tehtävää.";
     }
 }
-    function lisaa() {
-        var lisattava = document.getElementById("lisattava").value;
-        axios.post('/api/todot', {
-            tehtava: lisattava,
+
+function lisaa() {
+    var lisattava = document.getElementById("lisattava").value;
+    axios.post('api/todot', {
+        tehtava: lisattava,
+    })
+        .then(function (response) {
+            console.log(response);
         })
-            .then(function (response) {
-                console.log(response);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-        document.getElementById("lisattava").value = "";
-        document.getElementById("lisatty").innerHTML = "Tehtävä on lisätty listalle. Päivitä tehtävälista klikkaamalla 'Hae tehtävät'."
-    }
+        .catch(function (error) {
+            console.log(error);
+        });
+    document.getElementById("lisattava").value = "";
+    document.getElementById("lisatty").innerHTML = "Tehtävä on lisätty listalle. Päivitä tehtävälista klikkaamalla 'Hae tehtävät'."
+}
 
 function muokkaa() {
     var id = document.getElementById("muokattavanid").value;
